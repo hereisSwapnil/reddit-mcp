@@ -34,11 +34,9 @@ No scraping. No setup friction. Works instantly.
 ---
 
 ## 🎬 Quick Demo
+https://github.com/user-attachments/assets/21c3bf93-9a80-489c-94ef-d17807d07ec1
 
-<p align="center">
-  <video src="assets/demo.mp4" poster="assets/thumbnail.png" alt="Reddit MCP Demo" width="600" 
-  autoplay loop muted playsinline controls>
-</p>
+
 
 > 💡 *Ask Claude: "What's trending on r/programming today?"*
 
