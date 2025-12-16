@@ -1,45 +1,104 @@
-# Reddit MCP
+<p align="center">
+  <img src="assets/logo.png" alt="Reddit MCP Logo" width="120" height="120" style="border-radius:30px;">
+</p>
 
-A Model Context Protocol (MCP) server for browsing Reddit directly from Claude Desktop.
+<h1 align="center">Reddit MCP</h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.12+-green.svg)
+<p align="center">
+  A Model Context Protocol (MCP) server that lets Claude Desktop browse, search, and analyze Reddit in real time.
+</p>
 
-## ✨ Features
+<p align="center">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License">
+  </a>
+  <img src="https://img.shields.io/badge/python-3.12+-green.svg" alt="Python 3.12+">
+  <img src="https://img.shields.io/badge/MCP-Claude%20Desktop-purple.svg" alt="Claude MCP">
+</p>
 
-- 🔍 **Browse Subreddits** - View posts from any subreddit with flexible sorting
-- 🔎 **Search Reddit** - Search across Reddit or within specific communities
-- 📄 **Post Details** - Get full post content with threaded comments
-- 👤 **User Analysis** - Analyze Reddit user activity and statistics
-- 🔓 **No Auth Required** - Works immediately in anonymous mode
-- ⚡ **Optional OAuth** - Add credentials for higher rate limits
+---
 
-## 🚀 Installation
+## ✨ What is Reddit MCP?
 
-### One-Click Install (Recommended)
+**Reddit MCP** is a plug-and-play MCP server that allows Claude Desktop to interact directly with Reddit.
 
-1. **Install `uv`** (if not already installed):
-   
-   **macOS/Linux:**
+Your AI can:
+- Explore subreddits
+- Search discussions and opinions
+- Fetch full comment threads
+- Analyze Reddit users
+- Detect trends and sentiment in real time
+
+No scraping. No setup friction. Works instantly.
+
+---
+
+## 🎬 Quick Demo
+
+<p align="center">
+  <img src="assets/demo.gif" alt="Reddit MCP Demo" width="600">
+</p>
+
+> 💡 *Ask Claude: "What's trending on r/programming today?"*
+
+---
+
+## 🚀 Quick Start (30 seconds)
+
+1. **Install `uv`** if you don't have it:
+
+   **macOS / Linux**
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
    sudo ln -sf ~/.local/bin/uv /usr/local/bin/uv
    ```
-   
-   **Windows:**
+
+   **Windows**
    ```powershell
    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 
-2. **[⬇️ Download reddit-mcp.mcpb](https://github.com/hereisSwapnil/reddit-mcp/releases/download/v1.0.0/reddit-mcp.mcpb)**
+2. **Download the MCP bundle**  
+   👉 [reddit-mcp.mcpb](https://github.com/hereisSwapnil/reddit-mcp/releases/download/v1.0.0/reddit-mcp.mcpb)
 
-3. **Double-click** the downloaded file to install in Claude Desktop
+3. **Double-click** the `.mcpb` file — Claude Desktop installs it automatically.
 
-4. **Done!** Start using Reddit tools in Claude
+4. **Open Claude Desktop** and start asking Reddit questions.
 
-### Manual Installation
+That's it!
 
-Add to your `claude_desktop_config.json`:
+---
+
+## 🔥 Key Features
+
+| Feature | Description |
+|---------|-------------|
+| 🔍 **Browse Subreddits** | View posts from any subreddit with hot, new, top, or rising sorting |
+| 🔎 **Search Reddit** | Search globally or within specific communities |
+| 📄 **Post Details** | Fetch full post content with deeply threaded comments |
+| 👤 **User Analysis** | Analyze a Reddit user's karma, activity patterns, and top subreddits |
+| 🔓 **Anonymous Mode** | No API keys required. Works out of the box |
+| ⚡ **Optional OAuth** | Add Reddit credentials for higher rate limits and stability |
+
+---
+
+## 📦 One-Click Installation (Recommended)
+
+Download and install directly in Claude Desktop:
+
+<p align="center">
+  <a href="https://github.com/hereisSwapnil/reddit-mcp/releases/download/v1.0.0/reddit-mcp.mcpb">
+    <img src="https://img.shields.io/badge/Download-reddit--mcp.mcpb-orange?style=for-the-badge" alt="Download">
+  </a>
+</p>
+
+**Supports:** macOS • Windows • Linux
+
+---
+
+## 🛠️ Manual Installation
+
+Add the server to `claude_desktop_config.json`:
 
 ```json
 {
@@ -53,57 +112,95 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
-## ⚙️ Configuration (Optional)
+Restart Claude Desktop after saving.
 
-For higher rate limits (60 req/min vs 10 req/min), add your Reddit API credentials:
+---
+
+## 🔐 Authentication (Optional)
+
+Anonymous access works, but OAuth unlocks higher limits.
+
+| Mode | Rate Limit | Setup Required |
+|------|------------|----------------|
+| Anonymous | ~10 req/min | None |
+| OAuth | ~60 req/min | Client ID + Secret |
+
+### How to enable OAuth
 
 1. Go to [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps)
-2. Click **"create another app..."**
-3. Select **"script"** type
-4. Note your **Client ID** and **Client Secret**
-5. Enter them when prompted during MCP installation
+2. Click **Create another app**
+3. Select **script**
+4. Copy your **Client ID** and **Client Secret**
+5. Enter them when prompted during MCP setup
 
-## 🛠️ Available Tools
+No tokens are stored remotely.
+
+---
+
+## 🧰 Available MCP Tools
 
 | Tool | Description |
 |------|-------------|
-| `browse_subreddit` | Browse posts from any subreddit with sorting (hot, new, top, rising) |
-| `search_reddit` | Search Reddit for posts matching a query |
-| `get_post_details` | Get full post details including threaded comments |
-| `user_analysis` | Analyze a Reddit user's activity, karma, and top subreddits |
+| `browse_subreddit` | Browse posts from any subreddit |
+| `search_reddit` | Search Reddit posts by keyword |
+| `get_post_details` | Fetch full post content and comments |
+| `user_analysis` | Analyze Reddit user activity and karma |
 
-## 💬 Example Usage
+---
 
-Ask Claude things like:
+## 💬 Example Queries
 
-- *"Browse the top posts from r/programming this week"*
-- *"Search Reddit for 'machine learning tutorials'"*
-- *"Get details and comments for post ID abc123"*
+**Trending & Discovery**
+- *"What's trending across all of Reddit today?"*
+- *"Show me the hottest discussions in r/technology"*
+
+**Search & Opinions**
+- *"What are people saying about GPT-4?"*
+- *"Find discussions about remote work in r/cscareerquestions"*
+
+**Post & Comment Analysis**
+- *"Get the full discussion from this Reddit post"*
+- *"Summarize the top comments on post abc123"*
+
+**User Analysis**
 - *"Analyze the Reddit user spez"*
+- *"What subreddits does u/DeepFuckingValue post in?"*
+
+---
 
 ## 📁 Project Structure
 
 ```
 reddit-mcp/
-├── main.py           # MCP server entry point and tool definitions
+├── main.py           # MCP server entry point
 ├── reddit/
-│   └── api.py        # Reddit API client (supports OAuth and anonymous)
-├── manifest.json     # MCP bundle manifest for one-click install
+│   └── api.py        # Reddit API client (OAuth + anonymous)
+├── manifest.json     # MCP bundle metadata
 ├── pyproject.toml    # Python dependencies
 └── README.md
 ```
 
-## 🔒 Rate Limits
-
-| Mode | Rate Limit | Requirements |
-|------|------------|--------------|
-| Anonymous | 10 req/min | None |
-| OAuth | 60 req/min | Client ID + Secret |
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+---
 
 ## 🤝 Contributing
 
-Contributions welcome! Please feel free to submit a Pull Request.
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+Ideas: caching, sentiment analysis, topic clustering, summaries.
+
+---
+
+## 📄 License
+
+Licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  <b>Reddit MCP turns Claude into a real-time Reddit analyst.</b>
+</p>
