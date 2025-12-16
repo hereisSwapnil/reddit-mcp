@@ -2,7 +2,7 @@
 
 A Model Context Protocol (MCP) server for browsing Reddit directly from Claude Desktop.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.12+-green.svg)
 
 ## ✨ Features
@@ -31,7 +31,7 @@ A Model Context Protocol (MCP) server for browsing Reddit directly from Claude D
    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 
-2. **[⬇️ Download reddit-mcp.mcpb](https://github.com/hereisswapnil/reddit-mcp/releases/latest/download/reddit-mcp.mcpb)**
+2. **[⬇️ Download reddit-mcp.mcpb](https://github.com/hereisSwapnil/reddit-mcp/releases/download/v1.0.0/reddit-mcp.mcpb)**
 
 3. **Double-click** the downloaded file to install in Claude Desktop
 
@@ -102,7 +102,7 @@ reddit-mcp/
 
 ## 📄 License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
