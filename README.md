@@ -31,9 +31,9 @@ A Model Context Protocol (MCP) server for browsing Reddit directly from Claude D
    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 
-2. **Download** `reddit-mcp.mcpb`
+2. **[⬇️ Download reddit-mcp.mcpb](https://github.com/hereisswapnil/reddit-mcp/releases/latest/download/reddit-mcp.mcpb)**
 
-3. **Double-click** to install in Claude Desktop
+3. **Double-click** the downloaded file to install in Claude Desktop
 
 4. **Done!** Start using Reddit tools in Claude
 
@@ -72,6 +72,33 @@ For higher rate limits (60 req/min vs 10 req/min), add your Reddit API credentia
 | `get_post_details` | Get full post details including threaded comments |
 | `user_analysis` | Analyze a Reddit user's activity, karma, and top subreddits |
 
+## 💬 Example Usage
+
+Ask Claude things like:
+
+- *"Browse the top posts from r/programming this week"*
+- *"Search Reddit for 'machine learning tutorials'"*
+- *"Get details and comments for post ID abc123"*
+- *"Analyze the Reddit user spez"*
+
+## 📁 Project Structure
+
+```
+reddit-mcp/
+├── main.py           # MCP server entry point and tool definitions
+├── reddit/
+│   └── api.py        # Reddit API client (supports OAuth and anonymous)
+├── manifest.json     # MCP bundle manifest for one-click install
+├── pyproject.toml    # Python dependencies
+└── README.md
+```
+
+## 🔒 Rate Limits
+
+| Mode | Rate Limit | Requirements |
+|------|------------|--------------|
+| Anonymous | 10 req/min | None |
+| OAuth | 60 req/min | Client ID + Secret |
 
 ## 📄 License
 
