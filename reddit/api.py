@@ -1,4 +1,5 @@
 import time
+import random
 import requests
 from collections import defaultdict
 
@@ -8,10 +9,12 @@ class RedditAPI:
     OAUTH_BASE_URL = "https://oauth.reddit.com"
     PUBLIC_BASE_URL = "https://www.reddit.com"
 
-    def __init__(self, client_id=None, client_secret=None, user_agent="reddit-mcp/0.1"):
+    def __init__(self, client_id=None, client_secret=None, user_agent=None):
         self.client_id = client_id
         self.client_secret = client_secret
-        self.user_agent = user_agent
+        # Reddit requires a descriptive User-Agent to avoid 403 blocks
+        # Format: <platform>:<app ID>:<version>
+        self.user_agent = user_agent or "python:reddit-mcp-server:v1.0.0"
 
         self._token = None
         self._token_expiry = 0
@@ -51,16 +54,41 @@ class RedditAPI:
     def _base_url(self):
         return self.OAUTH_BASE_URL if self.use_oauth else self.PUBLIC_BASE_URL
 
-    def _get(self, path, params=None):
+    def _get(self, path, params=None, max_retries=3):
         if params is None:
             params = {}
 
         params["raw_json"] = 1
 
         url = f"{self._base_url()}{path}"
-        res = requests.get(url, headers=self._headers(), params=params)
-        res.raise_for_status()
-        return res.json()
+
+        for attempt in range(max_retries):
+            try:
+                res = requests.get(
+                    url, headers=self._headers(), params=params, timeout=10
+                )
+                res.raise_for_status()
+                return res.json()
+            except requests.exceptions.HTTPError as e:
+                if e.response.status_code == 403:
+                    # Reddit is blocking us, wait and retry with backoff
+                    if attempt < max_retries - 1:
+                        wait_time = (2**attempt) + random.uniform(0, 1)
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        raise requests.exceptions.HTTPError(
+                            "403 Forbidden: Reddit is blocking requests. "
+                            "Try using OAuth credentials for better access.",
+                            response=e.response,
+                        )
+                raise
+            except requests.exceptions.Timeout:
+                if attempt < max_retries - 1:
+                    continue
+                raise
+
+        raise requests.exceptions.RequestException("Max retries exceeded")
 
     # -------------------------
     # Helpers
