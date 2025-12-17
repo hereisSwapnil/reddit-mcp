@@ -123,7 +123,7 @@ Connect Reddit MCP to ChatGPT using the public SSE endpoint.
 
 Use the pre-hosted server URL:
 ```
-https://www.swapnil.xyz/reddit-mcp/sse
+https://reddit-mcp-production-79ca.up.railway.app/sse
 ```
 
 ### Or Self-Host with ngrok
@@ -149,7 +149,7 @@ https://www.swapnil.xyz/reddit-mcp/sse
    - **Icon**: Upload the Reddit MCP logo (optional)
    - **Name**: `Reddit MCP`
    - **Description**: `Browse, search, and analyze Reddit`
-   - **MCP Server URL**: `https://www.swapnil.xyz/reddit-mcp/sse`
+   - **MCP Server URL**: `https://reddit-mcp-production-79ca.up.railway.app/sse`
    - **Authentication**: Select `No Auth`
 5. Check **"I understand and want to continue"**
 6. Click **Create**
