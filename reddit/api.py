@@ -143,12 +143,18 @@ class RedditAPI:
         }
 
         if subreddit:
-            params["restrict_sr"] = True
+            params["restrict_sr"] = "on"
             path = f"/r/{subreddit}/search.json"
         else:
             path = "/search.json"
 
-        data = self._get(path, params)
+        try:
+            data = self._get(path, params)
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                return {"error": f"Subreddit '{subreddit}' not found.", "posts": []}
+            raise
+
         listing = data["data"]
 
         return {
