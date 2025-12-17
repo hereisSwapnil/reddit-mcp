@@ -115,6 +115,49 @@ Restart Claude Desktop after saving.
 
 ---
 
+## 🤖 ChatGPT Integration
+
+Connect Reddit MCP to ChatGPT using the public SSE endpoint.
+
+### Use Hosted Server (Recommended)
+
+Use the pre-hosted server URL:
+```
+https://www.swapnil.xyz/reddit-mcp/sse
+```
+
+### Or Self-Host with ngrok
+
+1. Run the server with SSE enabled:
+   ```bash
+   SERVE_HTTPS=true uv run main.py
+   ```
+
+2. Expose it publicly:
+   ```bash
+   ngrok http 8000
+   ```
+
+3. Use your ngrok URL: `https://your-subdomain.ngrok.io/sse`
+
+### Setup in ChatGPT
+
+1. Go to **Settings** → **Apps & Connectors**
+2. Scroll down to **Advanced settings** and click **Create app**
+3. Enable **Developer mode** (toggle ON)
+4. Click **Create App** and fill in:
+   - **Icon**: Upload the Reddit MCP logo (optional)
+   - **Name**: `Reddit MCP`
+   - **Description**: `Browse, search, and analyze Reddit`
+   - **MCP Server URL**: `https://www.swapnil.xyz/reddit-mcp/sse`
+   - **Authentication**: Select `No Auth`
+5. Check **"I understand and want to continue"**
+6. Click **Create**
+
+Your Reddit MCP connector will appear in the enabled apps list. Start using it!
+
+---
+
 ## 🔐 Authentication (Optional)
 
 Anonymous access works, but OAuth unlocks higher limits.

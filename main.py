@@ -11,6 +11,9 @@ from typing import Optional
 
 from mcp.server.fastmcp import FastMCP
 from reddit.api import RedditAPI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 # ============================================================================
@@ -70,7 +73,14 @@ def init_reddit_client() -> RedditAPI:
 # Server Initialization
 # ============================================================================
 
-mcp = FastMCP("reddit-mcp")
+# Check if we should serve over HTTPS/SSE (for remote access)
+SERVE_SSE = os.environ.get("SERVE_HTTPS", "").lower() == "true"
+
+if SERVE_SSE:
+    mcp = FastMCP("reddit-mcp", host="0.0.0.0", port=8000)
+else:
+    mcp = FastMCP("reddit-mcp")
+
 reddit = init_reddit_client()
 
 
@@ -146,7 +156,11 @@ def user_analysis(username: str, limit: int = 50):
 
 def main():
     """Run the MCP server."""
-    mcp.run(transport="stdio")
+    if SERVE_SSE:
+        print("Reddit MCP: Starting SSE server on 0.0.0.0:8000", file=sys.stderr)
+        mcp.run(transport="sse")
+    else:
+        mcp.run(transport="stdio")
 
 
 if __name__ == "__main__":
