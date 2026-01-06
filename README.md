@@ -34,8 +34,7 @@ No scraping. No setup friction. Works instantly.
 ---
 
 ## 🎬 Quick Demo
-https://github.com/user-attachments/assets/21c3bf93-9a80-489c-94ef-d17807d07ec1
-
+https://github.com/user-attachments/assets/7cccd617-12f1-4ffc-966f-34415adb5dd6
 
 
 > 💡 *Ask Claude: "What's trending on r/programming today?"*
